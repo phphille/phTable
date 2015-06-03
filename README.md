@@ -12,13 +12,14 @@ git clone https://github.com/phphille/phTable
 For full documentation and HOW TO check out: http://www.student.bth.se/~phpe14//javascript/projektet/index.php
 
 The plugin comes with examples as well.
-=====
-Quick installation:
 
+Quick installation:
+===
 Create a search form and give the input fields same names as their corresponding table name in you MySql database table.
-Include a <input type='hidden' name='getData'> in the form as well.
+Include a `<input type='hidden' name='getData'>` in the form as well.
 
 Include js script in your document:
+```
 <script type="text/javascript" src="js/phTable_v1.0/phTable.js"></script>
 <script type="text/javascript">
 
@@ -45,9 +46,10 @@ Include js script in your document:
         });
      });
 </script>
-
+```
 
 Create a php script that handles the ajax request from the plugin. The parameters that will be sent from the plugin is:
+```
 // Check if the text fields contains any data and remove any harmful tags.
 $title = isset($_POST['Title'])  ? strip_tags($_POST['Title']) : null;
 $description = isset($_POST['Description'])  ? strip_tags($_POST['Description']) : null;
@@ -82,13 +84,14 @@ $updateCellData = isset($_POST['updateCellData']) ? true : false;
 $id = isset($_POST['id']) && is_numeric($_POST['id']) ? $_POST['id'] : null;
 $column = isset($_POST['column']) ? strip_tags($_POST['column']) : null;
 $content = isset($_POST['content']) ? strip_tags($_POST['content']) : null;
+```
 
 
-
-And theis variables have to be sent back to the plugin, every time:
+And these variables have to be sent back to the plugin, every time:
+```
 // Deliver the response, as a JSON object with the requiered data.
 header('Content-type: application/json');
 echo json_encode(array("output" => $data, 'noHide' => $noHide, 'nbrRows' => $rows, 'hits' => $hits, 'page' => $page));
-
+```
 
 Copyright (c) 2014 Philip Persson, phphille@gmail.com
