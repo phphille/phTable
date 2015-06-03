@@ -4,8 +4,7 @@ A project in the course: JavaScript, jQuery och AJAX med HTML5, PHP (javascript 
 
 Read more about the project [here](http://dbwebb.se/javascript/kmom10).(In swedish) 
 
-HOW TO
-
+Get plugin:
 git clone https://github.com/phphille/phTable
 
 
