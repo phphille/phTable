@@ -14,13 +14,16 @@ The plugin comes with examples as well.
 
 Discription
 ===
-With phTABLE you can load data from a MySQL table and display it in a html table with the ability to expand or hide columns. The plugin includes also pagining, sorting and is combined with a search form. The plugin has also CRUD (Create, Read, Update, Delete) abilities with input validation combined with information messages.
 
-In the example section you can interact with two different tables that is connected with the same plugin. There you can update cell columns by simply dubbel clicking the cell. You can then commit your change by pressing enter och klick out side the input field to close it.
-You can search on different columns and choose if the search shall automatically expand the columns or not and you can also choose if you want the table to retrive all the columns or not. By default, the table will always get all table columns that is declared as table heading and those column you have a searched on.
+With phTABLE you can load data from a MySQL table and display it in a html table with the ability to expand or hide columns. The plugin includes also paging, sorting and is combined with a search form. The plugin has also CRUD (Create, Read, Update, Delete) abilities with input validation combined with information messages.
 
-Both at the top and bottom you will find the paging navigation and hits choices. You can also sort the data in the table by clicking on the table headings. Under each table row, if you have search on a hidden column or checked the choice Get all, you will get an short orange line which can be clicked on. If clicked, it will reviel the hidden columns and their values. These can also be edited. phTABLE have the option to declare columns to not be editable which has been included in the examples. In the last table row you will find the form for adding a table row.
+In the example section you can interact with two different tables that is connected with the same plugin. There you can update cell columns by simply double clicking the cell. You can then commit your change by pressing enter or if you want to close it, click outside the input field.
 
+You can search on different columns and choose if the search shall automatically expand the columns or not and you can also choose if you want the table to retrieve all the columns or not. By default, the table will always get all table columns that is declared as table heading and those column you have a searched on.
+
+Both at the top and bottom you will find the paging navigation and hits choices. You can also sort the data in the table by clicking on the table headings. Under each table row, if you have search on a hidden column or checked the choice Get all, you will get a short orange line, which can be clicked on. If clicked, it will revile the hidden columns and their values. These can also be edited. phTABLE have the option to declare columns to not be editable which has been included in the examples. In the last table row you will find the form for adding a new row of data.
+
+Interact with examples and the check the documentations for a better understanding of the plugins capabilities and how to implement it.
 
 
 Quick installation:
