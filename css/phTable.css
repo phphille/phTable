@@ -294,6 +294,10 @@ th.phTable, td.phTable{
 	border:1px solid #ddd;
 }
 
+td.phTable-noBorder{
+    	border: none !important;
+}
+
 th.phTable{
     position: relative;
 	background:#494F5B;
@@ -467,7 +471,12 @@ input.phTable-forCellEdit{
     left: 0;
     z-index: 1;
     width: 100%;
-    height: 100%;
+    height: 90%;
+}
+
+input.phTable-forAdd{
+    width: 100%;
+    height: 80%;
 }
 
 

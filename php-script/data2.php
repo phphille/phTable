@@ -200,24 +200,24 @@ $getData = isset($_POST['getData']) ? true : false;
 $addData = isset($_POST['addData']) ? true : false;
 $deleteData = isset($_POST['deleteData']) ? true : false;
 
-$ID = isset($_POST['ID']) && !empty($_POST['ID']) ? strip_tags($_POST['ID']) : null;
-$Name = isset($_POST['Name']) && !empty($_POST['Name']) ? strip_tags($_POST['Name']) : null;
-$Continent = isset($_POST['Continent']) && !empty($_POST['Continent']) ? strip_tags($_POST['Continent']) : null;
-$Region = isset($_POST['Region']) && !empty($_POST['Region']) ? strip_tags($_POST['Region']) : null;
-$Surface_area = isset($_POST['Surface_area']) && !empty($_POST['Surface_area']) ? strip_tags($_POST['Surface_area']) : null;
-$Indep_year = isset($_POST['Indep_year']) && !empty($_POST['Indep_year']) ? strip_tags($_POST['Indep_year']) : null;
-$Population = isset($_POST['Population']) && !empty($_POST['Population']) ? strip_tags($_POST['Population']) : null;
-$Life_expectancy = isset($_POST['Life_expectancy']) && !empty($_POST['Life_expectancy']) ? strip_tags($_POST['Life_expectancy']) : null;
-$GNP = isset($_POST['GNP']) && !empty($_POST['GNP']) ? strip_tags($_POST['GNP']) : null;
-$GNP_old = isset($_POST['GNP_old']) && !empty($_POST['GNP_old']) ? strip_tags($_POST['GNP_old']) : null;
-$Local_name = isset($_POST['Local_name']) && !empty($_POST['Local_name']) ? strip_tags($_POST['Local_name']) : null;
-$Government_form = isset($_POST['Government_form']) && !empty($_POST['Government_form']) ? strip_tags($_POST['Government_form']) : null;
-$Capital = isset($_POST['Capital']) && !empty($_POST['Capital']) ? strip_tags($_POST['Capital']) : null;
-$Code_2 = isset($_POST['Code_2']) && !empty($_POST['Code_2']) ? strip_tags($_POST['Code_2']) : null;
-$Head_of_state = isset($_POST['Head_of_state']) && !empty($_POST['Head_of_state']) ? strip_tags($_POST['Head_of_state']) : null;
+$ID = isset($_POST['ID']) && is_numeric($_POST['ID']) ? strip_tags($_POST['ID']) : null;
+$Name = isset($_POST['Name']) ? strip_tags($_POST['Name']) : null;
+$Continent = isset($_POST['Continent'])  ? strip_tags($_POST['Continent']) : null;
+$Region = isset($_POST['Region'])  ? strip_tags($_POST['Region']) : null;
+$Surface_area = isset($_POST['Surface_area'])  ? strip_tags($_POST['Surface_area']) : null;
+$Indep_year = isset($_POST['Indep_year']) ? strip_tags($_POST['Indep_year']) : null;
+$Population = isset($_POST['Population'])  ? strip_tags($_POST['Population']) : null;
+$Life_expectancy = isset($_POST['Life_expectancy'])  ? strip_tags($_POST['Life_expectancy']) : null;
+$GNP = isset($_POST['GNP'])  ? strip_tags($_POST['GNP']) : null;
+$GNP_old = isset($_POST['GNP_old'])   ? strip_tags($_POST['GNP_old']) : null;
+$Local_name = isset($_POST['Local_name'])   ? strip_tags($_POST['Local_name']) : null;
+$Government_form = isset($_POST['Government_form'])   ? strip_tags($_POST['Government_form']) : null;
+$Capital = isset($_POST['Capital'])   ? strip_tags($_POST['Capital']) : null;
+$Code_2 = isset($_POST['Code_2'])  ? strip_tags($_POST['Code_2']) : null;
+$Head_of_state = isset($_POST['Head_of_state'])   ? strip_tags($_POST['Head_of_state']) : null;
 
-$noHide = isset($_POST['noHide']) && !empty($_POST['noHide']) ? strip_tags($_POST['noHide']) : null;
-$getAll = isset($_POST['getAll']) && !empty($_POST['getAll']) ? strip_tags($_POST['getAll']) : null;
+$noHide = isset($_POST['noHide'])   ? strip_tags($_POST['noHide']) : null;
+$getAll = isset($_POST['getAll'])   ? strip_tags($_POST['getAll']) : null;
 
 
 $hits =  isset($_POST['hits']) && ( is_numeric($_POST['hits']) || $_POST['hits']=='All' ) ? strip_tags($_POST['hits']) : 20;
@@ -258,7 +258,7 @@ if($getCellData && $id && $column){
     }
 }
 
-if($updateCellData && $id && $column && $content){
+if($updateCellData && $id && $column){
     $sql = 'Update Country set '.$column.' = ? where ID = ?';
     $res = $db->ExecuteQuery($sql, array($content, $id));
 

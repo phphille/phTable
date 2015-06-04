@@ -11,14 +11,14 @@
 <body>
 
 
-<h2 >Table one</h2>
+<h2 class='headingNewPart'>Table one</h2>
 
 <form action='' method='post' id='firstForm'>
     <input type='hidden' name='getData'>
     <div class='searchFieldWrapper'>
         <h3>Search fields</h3>
         <div class='searchFieldContainter'>
-            <p>
+            <p class='extraTop'>
                 <label class='searchLabel'>Film id:</label>
                 <input type='text' class='phTable searchField'  name='Film_id' value=''>
 
@@ -31,7 +31,7 @@
             </p>
         </div>
         <div class='searchFieldContainter'>
-            <p>
+            <p class='extraTop'>
                 <label class='searchLabel'>Release year:</label>
                 <input type='text' class='phTable searchField'  name='Release_year' value=''>
                 <label class='searchFieldMarginLeft'>Language:</label>
@@ -41,7 +41,7 @@
             </p>
         </div>
         <div class='searchFieldContainter'>
-            <p>
+            <p class='extraTop'>
                 <label class='searchLabel'>Rental rate:</label>
                 <input type='text' class='phTable searchField'  name='Rental_rate' value=''>
                 <label class='searchFieldMarginLeft'>Length:</label>
@@ -51,7 +51,7 @@
             </p>
         </div>
         <div class='searchFieldContainter'>
-            <p>
+            <p class='extraTop'>
                 <label class='searchLabel'>Special features:</label>
                 <input type='text' class='phTable searchField'  name='Special_features' value=''>
 
@@ -60,7 +60,7 @@
             </p>
         </div>
 
-        <p>
+        <p class='extraTop'>
             <input class='phTable-checkboxx' type='checkbox' id='noHide' name='noHide'/><label class='phTable-checkboxx'  for='noHide'>Show all</label>
             <input class='phTable-checkboxx' type='checkbox' id='getAll' name='getAll'/><label class='phTable-checkboxx'  for='getAll'>Get all</label>
             <input type='submit' class='phTable' value='Search' name='search'>

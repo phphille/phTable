@@ -94,7 +94,7 @@ jQuery.fn.phTable = function(o) {
 
         commitCellEdit: function(){
             var prototype = this;
-
+            console.log($('#phTable-editTd').serialize());
             $.ajax({
             type: prototype.formMethod,
             url: prototype.formUrl,
@@ -104,7 +104,6 @@ jQuery.fn.phTable = function(o) {
 
             },
             success: function(data){
-                console.log(data);
                 if(data.output){
                     $('#editTd').remove();
                     prototype.getData();
@@ -228,7 +227,9 @@ jQuery.fn.phTable = function(o) {
                 var printExpandable = false;
                 tableContent += '<tr class="phTable"><td class="phTable phTable-noEdit phTable-del"><div class="phTable-DeleteButton"></div></td>';
                 $.each(value, function( index, value ) {
-
+                    if(value === null){
+                        value = '';
+                    }
                     //skriver ut datan i kolumnerna om det är header värdena
                     if(prototype.tableHeading.indexOf(index) > -1){
                         tableContent += "<td class='phTable "+prototype.markNotEditable(index)+"'>"+value+"</td>";
@@ -258,7 +259,7 @@ jQuery.fn.phTable = function(o) {
             $.each(items, function(index, value){
                 row +=  "<tr class='phTable phTable-inside'><th class='phTable phTable-inside'>"+index.replace('_', ' ')+"</th><td class='phTable phTable-inside "+prototype.markNotEditable(index)+"'>"+value+"</td></tr>";
             });
-            var rows = "<tr class='phTable'><td class='phTable phTable-tdButton phTable-noEdit' colspan='"+nbrColumns+"'><div class='phTable-triangleDown'></div></td></tr>";
+            var rows = "<tr class='phTable'><td class='phTable phTable-noBorder phTable-tdButton phTable-noEdit' colspan='"+nbrColumns+"'><div class='phTable-triangleDown'></div></td></tr>";
             rows += "<tr class='phTable phTable-hide phTable-expandable'><td colspan='"+nbrColumns+"' class='phTable-noEdit'>";
             rows += "<div class='phTable-tr-td-div'><div class='phTable-container-table-inside'><table class='phTable-inside'>"+row+"</table></div>";
             rows += "<div class='phTable-tr-td-div-div'></div>";
@@ -275,7 +276,7 @@ jQuery.fn.phTable = function(o) {
             var prototype = this;
             $.each(totalColumns, function(index, value){
                 if(prototype.noEditColumnName.indexOf(value.replace('_', ' ')) === -1){
-                    row +=  "<tr class='phTable phTable-inside'><th class='phTable phTable-inside'>"+value.replace('_', ' ')+"</th><td class='phTable phTable-inside phTable-addData phTable-noEdit'><input type='text' class='phTable phTable-forCellEdit' name='"+value+"'></td></tr>";
+                    row +=  "<tr class='phTable phTable-inside'><th class='phTable phTable-inside'>"+value.replace('_', ' ')+"</th><td class='phTable phTable-inside phTable-addData phTable-noEdit'><input type='text' class='phTable phTable-forAdd' name='"+value+"'></td></tr>";
                 }
             });
             var rows = "<tr class='phTable'><td class='phTable phTable-tdButton phTable-addData phTable-noEdit' colspan='"+nbrColumns+"'><div class='phTable-triangleDown phTable-AddItemExtraMargin'></div></td></tr>";
@@ -628,7 +629,7 @@ jQuery.fn.phTable = function(o) {
 
             }
             else{
-                var inputValue = $('#phTable-editTd input.phTable-forCellEdit').val();
+                var inputValue = $('#phTable-editTd input.phTable-forCellEdit').val().trim();
                 var inside = $('#phTable-editTd').parent().hasClass('phTable-inside');
                 var columnName;
                 //kollar om man klickar på en cell som är tillåten att ändra
@@ -636,14 +637,16 @@ jQuery.fn.phTable = function(o) {
                     columnName = $('#phTable-editTd').parent().siblings('th').text();
                 }
                 else{
-                    columnName = $(this.tableID +' th:not(.phTable-inside)').eq($('#phTable-editTd').parent().index()).text();
+                    columnName = $(this.tableID +' tr th:not(.phTable-inside)').eq($('#phTable-editTd').parent().index()).text();
                 }
 
                 if(this.noEditColumnName.indexOf( columnName ) < 0 ){
                     columnName = columnName.replace(" ", "_");
                     if (this.validationData[columnName] !== undefined) {
-                        if(inputValue.trim() === '' && this.validationData[target.columnName].nullAble){
-                            target.element.removeClass('phTable-error');
+                        if( inputValue === '' && this.validationData[columnName].nullAble){
+                            console.log('inne');
+                            $('#phTable-inputError').remove();
+                            this.commitCellEdit();
                         }
                         else if (this.validationData[columnName].regex !== undefined) {
                             var regex = new RegExp(this.validationData[columnName].regex);
@@ -729,7 +732,7 @@ jQuery.fn.phTable = function(o) {
             }
         }
         else{
-            if(table.noEditColumnName.indexOf( $('#phTable-table th:not(.phTable-inside)').eq(target.index()).text() ) < 0 ){
+            if(table.noEditColumnName.indexOf( $(table.tableID + ' tr:eq(1) th').eq(target.index()).text() ) < 0 ){
                 table.handleEvent(e, 'dblClickTd');
             }
         }
