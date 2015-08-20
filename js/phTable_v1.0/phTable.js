@@ -384,7 +384,7 @@ jQuery.fn.phTable = function(o) {
                     this.sortBy = '&orderby='+$(target).text().replace(" ", "_") + '&order=asc';
                 }
                 else if($('div', target).hasClass( 'phTable-asc' )){
-                    $('div', target).removeClass( 'phTable-asc' ).addClass('desc');
+                    $('div', target).removeClass( 'phTable-asc' ).addClass('phTable-desc');
                     this.sortBy = '&orderby='+$(target).text().replace(" ", "_") + '&order=desc';
                 }
                 else if($('div', target).hasClass( 'phTable-desc' )){
@@ -430,7 +430,10 @@ jQuery.fn.phTable = function(o) {
             }
             $(getHitsPerPage(hits)).appendTo(this.tableID + ' .phTable-pageHitsContainer');
 
-            function getPageNavigation(hits, page, maxx, min=1) {
+            function getPageNavigation(hits, page, maxx, min) {
+                if(min === undefined){
+                    min=1;
+                }
               var nav = "<div><label id='phTable-pageFirst' class='phTable-pageNav phTable-pageEndLeft' title='First page'>&#8676;</label> ";
               nav += "<label id='phTable-pagePrev' class='phTable-pageNav phTable-pageLeft' title='Previous page'>&#10096;</label>";
 
